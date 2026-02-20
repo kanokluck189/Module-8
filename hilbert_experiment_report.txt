@@ -1,0 +1,71 @@
+================================================================================
+NUMERICAL INSTABILITY STUDY: HILBERT MATRIX EXPERIMENTS
+================================================================================
+
+Report Date: 2026-02-20 01:05:18
+Matrix sizes analyzed: 2×2 to 15×15
+
+================================================================================
+CRITICAL POINTS:
+--------------------------------------------------------------------------------
+• 1% Error Threshold Reached at n = 12
+  - Condition Number: 1.75e+16
+  - Relative Error: 3.66e-01
+  - Digits Lost: 16.24
+
+• Complete Failure (100% Error) at n = 13
+  - Condition Number: 3.34e+18
+  - Relative Error: 2.07e+00
+  - Digits Lost: 18.52
+
+================================================================================
+EXPERIMENTAL RESULTS SUMMARY:
+--------------------------------------------------------------------------------
+   n |     Condition Number |  Relative Error |  Digits Lost |     Status
+--------------------------------------------------------------------------------
+   2 |           1.9281e+01 |      6.6613e-16 |         1.29 |       GOOD
+   3 |           5.2406e+02 |      8.2157e-15 |         2.72 |       GOOD
+   4 |           1.5514e+04 |      3.9724e-13 |         4.19 |       GOOD
+   5 |           4.7661e+05 |      1.1227e-12 |         5.68 |       GOOD
+   6 |           1.4951e+07 |      2.3137e-10 |         7.17 |       WARN
+   7 |           4.7537e+08 |      9.2686e-09 |         8.68 |       WARN
+   8 |           1.5258e+10 |      1.0905e-07 |        10.18 |       WARN
+   9 |           4.9315e+11 |      8.9150e-06 |        11.69 |       WARN
+  10 |           1.6024e+13 |      1.0925e-04 |        13.20 |       WARN
+  11 |           5.2227e+14 |      1.7427e-04 |        14.72 |       WARN
+  12 |           1.7515e+16 |      3.6641e-01 |        16.24 |       FAIL
+  13 |           3.3441e+18 |      2.0679e+00 |        18.52 |       FAIL
+  14 |           6.2008e+17 |      6.0307e+00 |        17.79 |       FAIL
+  15 |           3.6744e+17 |      5.9476e+00 |        17.57 |       FAIL
+
+================================================================================
+KEY FINDINGS:
+--------------------------------------------------------------------------------
+1. Exponential Growth: Condition number grows exponentially with matrix size
+2. Direct Relationship: Error ∝ Condition Number
+3. Accuracy Limits: Reliable solutions only for n ≤ 8
+4. Critical Threshold: n = 12 exceeds double precision limits
+5. Complete Failure: n ≥ 13 produces meaningless results (>100% error)
+
+================================================================================
+COMPARISON WITH RANDOM MATRICES:
+--------------------------------------------------------------------------------
+At n = 10:
+• Hilbert Condition: 1.60e+13
+• Random Condition: 5.68e+02
+• Ratio: 2.82e+10x
+
+• Hilbert Error: 1.09e-04
+• Random Error: 3.91e-14
+• Ratio: 2.80e+09x
+
+================================================================================
+CONCLUSIONS:
+--------------------------------------------------------------------------------
+• Mathematical correctness does NOT guarantee numerical reliability
+• Problem conditioning is as important as algorithm selection
+• Always check condition numbers before trusting results
+• For Hilbert matrices, n > 8 requires extended precision or reformulation
+• Random matrices remain stable - ill-conditioning is problem-specific
+
+================================================================================
